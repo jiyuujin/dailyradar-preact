@@ -42,6 +42,8 @@ module.exports = {
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         alias: {
             '@': path.resolve(__dirname, 'src/'),
+            react: 'preact/compat',
+            'react-dom': 'preact/compat',
         },
     },
     output: {
