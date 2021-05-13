@@ -2,6 +2,10 @@ const webpack = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const path = require('path')
 
+const dotenv = require('dotenv')
+
+const env = dotenv.config().parsed
+
 module.exports = {
     entry: './src/index.tsx',
     module: {
@@ -55,6 +59,9 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new ForkTsCheckerWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(env),
+        }),
     ],
     cache: {
         type: 'filesystem',
